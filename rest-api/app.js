@@ -25,13 +25,15 @@ app.get("/users/:id", (req, res) => {
   }
 });
 app.post("/users", (req, res) => {
+  const { full_name, country, email } = req.body;
   const willSaveData = {
     id: new Date().getTime(),
-    full_name: req.body.full_name,
-    country: req.body.country,
-    email: req.body.email,
+    full_name,
+    country,
+    email,
     created_at: new Date()
   };
+  
   db.push(willSaveData);
   res.send(willSaveData);
 });
